@@ -30,15 +30,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Link
+                            Les Départements
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="ajouter_classe.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>SubLink</p>
+                            <a href="{{ route('department.index') }}" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des départements</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('department.create') }}" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter un département</p>
                             </a>
                         </li>
                     </ul>
