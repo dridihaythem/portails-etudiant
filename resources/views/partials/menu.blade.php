@@ -49,6 +49,56 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Les spécialités
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des spécialités</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter une spécialité</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Les classes
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('classe.index') }}" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des classes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('classe.create') }}" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter un classe</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>

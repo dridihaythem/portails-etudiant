@@ -21,4 +21,5 @@ Route::get('/', function () {
 });
 
 Route::resource('department', DepartmentController::class)->except('show');
+Route::resource('classe', ClasseController::class)->except('show');
 Route::resource('students', StudentController::class)->except('show');
