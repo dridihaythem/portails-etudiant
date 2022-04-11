@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;

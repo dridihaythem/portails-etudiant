@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Department;
+
+use App\Models\Classe;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DepartmentTableSeeder extends Seeder
+class ClasseTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,19 +15,19 @@ class DepartmentTableSeeder extends Seeder
      */
     public function run()
     {
-        Department::create([
+        Classe::create([
             'name' => "Technologies de l'informatique"
         ]);
 
-        Department::create([
+        Classe::create([
             'name' => "Génie électrique"
         ]);
 
-        Department::create([
+        Classe::create([
             'name' => "Génie de procédés"
         ]);
 
-        Department::create([
+        Classe::create([
             'name' => "Sciences économiques et de gestion"
         ]);
     }
