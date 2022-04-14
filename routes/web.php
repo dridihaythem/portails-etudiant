@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,5 @@ Route::get('/', function () {
 
 Route::resource('department', DepartmentController::class)->except('show');
 Route::resource('classe', ClasseController::class)->except('show');
+Route::resource('specialite',SpecialiteController::class)->except('show');
 Route::resource('students', StudentController::class)->except('show');
