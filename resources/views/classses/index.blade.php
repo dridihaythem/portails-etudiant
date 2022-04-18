@@ -17,10 +17,11 @@
         <table id="datatable" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
+                    <th>Niveau</th>
+                    <th>Spécialité</th>
+                    <th>Département</th>
                     <th>Creé le</th>
-                    <th>Modiifé le</th>
                     <th>?</th>
                 </tr>
             </thead>
@@ -69,16 +70,17 @@
             serverSide: true,
             responsive: true,
             dom: '<"html5buttons"B>lTfgitp',
-            ajax: '{{ route("classe.index") }}',
+            ajax: '{{ route("classe.index") }}?department_id={{request()->department_id}}',
             buttons: [
                 'copy', 'excel', 'pdf'
             ],
             order: [[ 0, 'desc' ]],
             columns: [
-                { data: 'id', name: 'id', searchable: true, orderable: true},
                 { data: 'name', name: 'name', searchable: true, orderable: true},
+                { data: 'level', name: 'level', searchable: true, orderable: true},
+                { data: 'specialite.name', name: 'specialite.name', searchable: true, orderable: true},
+                { data: 'specialite.department.name', name: 'specialite.department.name', searchable: true, orderable: true},
                 { data: 'created_at', name: 'created_at', searchable: false, orderable: true},
-                { data: 'updated_at', name: 'updated_at', searchable: false, orderable: true},
                 { data: 'actions', name: 'actions', searchable: false, orderable: true},
             ],
          })

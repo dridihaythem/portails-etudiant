@@ -17,6 +17,12 @@ class SpecialiteTableSeeder extends Seeder
     {
         Specialite::create([
             'department_id' => 1,
+            'name' => 'Tronc commun',
+            'prefix' => 'TI'
+        ]);
+
+        Specialite::create([
+            'department_id' => 1,
             'name' => 'Développement des systèmes d’information',
             'prefix' => 'DSI'
         ]);

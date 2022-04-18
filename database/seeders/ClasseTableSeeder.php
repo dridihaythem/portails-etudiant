@@ -16,19 +16,69 @@ class ClasseTableSeeder extends Seeder
     public function run()
     {
         Classe::create([
-            'name' => "Technologies de l'informatique"
+            'specialite_id' => 1,
+            'number' => 1,
+            'level' => 1,
         ]);
 
         Classe::create([
-            'name' => "Génie électrique"
+            'specialite_id' => 1,
+            'number' => 2,
+            'level' => 1,
         ]);
 
         Classe::create([
-            'name' => "Génie de procédés"
+            'specialite_id' => 1,
+            'number' => 3,
+            'level' => 1,
         ]);
 
         Classe::create([
-            'name' => "Sciences économiques et de gestion"
+            'specialite_id' => 2,
+            'number' => 1,
+            'level' => 2,
+        ]);
+
+        Classe::create([
+            'specialite_id' => 2,
+            'number' => 2,
+            'level' => 2,
+        ]);
+
+        Classe::create([
+            'specialite_id' => 3,
+            'number' => 1,
+            'level' => 2,
+        ]);
+
+        Classe::create([
+            'specialite_id' => 4,
+            'number' => 1,
+            'level' => 2,
+        ]);
+
+        Classe::create([
+            'specialite_id' => 2,
+            'number' => 1,
+            'level' => 3,
+        ]);
+
+        Classe::create([
+            'specialite_id' => 2,
+            'number' => 2,
+            'level' => 3
+        ]);
+
+        Classe::create([
+            'specialite_id' => 3,
+            'number' => 1,
+            'level' => 3
+        ]);
+
+        Classe::create([
+            'specialite_id' => 4,
+            'number' => 1,
+            'level' => 3
         ]);
     }
 }

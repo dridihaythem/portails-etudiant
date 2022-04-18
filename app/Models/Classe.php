@@ -10,4 +10,9 @@ class Classe extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function specialite()
+    {
+        return $this->belongsTo(Specialite::class);
+    }
 }

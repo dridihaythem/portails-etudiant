@@ -22,12 +22,10 @@ class DepartmentController extends Controller
                 ->editColumn('created_at', function ($row) {
                     return $row->created_at->format("d/m/Y");
                 })
-                ->editColumn('updated_at', function ($row) {
-                    return $row->updated_at->format("d/m/Y");
-                })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
-                    $actions .= "<a class='btn btn-sm btn-warning mr-1' href=" . route('specialite.index') . "?department_id={$row->id}>Les Specialités</a>";
+                    $actions .= "<a class='btn btn-sm btn-secondary mr-1' href=" . route('specialite.index') . "?department_id={$row->id}><i class='fas fa-copy'></i> Les Specialités</a>";
+                    // $actions .= "<a class='btn btn-sm btn-secondary mr-1' href=" . route('classe.index') . "?department_id={$row->id}><i class='fa-solid fa-users'></i> Les Classes</a>";
                     $actions .= "
                     <a class='btn btn-sm btn-success mr-1' href=" . route('department.edit', $row->id) . ">
                         <i class='fa-solid fa-pen-to-square'></i>

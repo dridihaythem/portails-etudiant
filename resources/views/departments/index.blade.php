@@ -20,7 +20,6 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Creé le</th>
-                    <th>Modiifé le</th>
                     <th>?</th>
                 </tr>
             </thead>
@@ -78,7 +77,6 @@
                 { data: 'id', name: 'id', searchable: true, orderable: true},
                 { data: 'name', name: 'name', searchable: true, orderable: true},
                 { data: 'created_at', name: 'created_at', searchable: false, orderable: true},
-                { data: 'updated_at', name: 'updated_at', searchable: false, orderable: true},
                 { data: 'actions', name: 'actions', searchable: false, orderable: true},
             ],
          })

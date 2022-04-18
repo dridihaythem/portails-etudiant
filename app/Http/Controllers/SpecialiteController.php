@@ -17,10 +17,6 @@ class SpecialiteController extends Controller
      */
     public function index(Request $request)
     {
-        // return  $specialites = Specialite::with('department')
-        //     ->when($request->has('department_id'), function ($query) use ($request) {
-        //         return $query->where('department_id', $request->department_id);
-        //     })->get();
         if ($request->ajax()) {
             $specialites = Specialite::with('department')
                 ->when($request->department_id, function ($query) use ($request) {

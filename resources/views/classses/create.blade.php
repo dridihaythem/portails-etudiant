@@ -14,25 +14,33 @@
             @csrf
 
             <div class="form-group">
-                <label>Department</label>
-                <select  select name="Department" class="form-control" id="pet-select">
-                <option value="aa">Technologies de l'informatique</option>
-                <option value="cat">Génie électrique</option>
-                <option value="hamster">Génie de procédés</option>
-                <option value="parrot">Sciences économiques et de gestion</option>
+                <label>Specialité :</label>
+                <select select name="specialite_id" class="form-control">
+                    @foreach ($specialites as $specialite)
+                    <option value="{{$specialite->id}}">{{$specialite->name}} ({{$specialite->department->name}})
+                    </option>
+                    @endforeach
                 </select>
-                @error('name')
+                @error('specialite_id')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
 
             <div class="form-group">
-                <label>Nom de la classe</label>
-                <input type="text" name="name" value="{{ old('name') }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="10/11/12/13">
-                @error('name')
+                <label>Niveau :</label>
+                <input type="number" name="level" value="{{ old('level') }}"
+                    class="form-control @error('level') is-invalid @enderror" placeholder="1ere / 2eme">
+                @error('level')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Numero :</label>
+                <input type="number" name="number" value="{{ old('number') }}"
+                    class="form-control @error('number') is-invalid @enderror" placeholder="1/2/3">
+                @error('number')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

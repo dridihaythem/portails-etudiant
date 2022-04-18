@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Specialite;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,9 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignIdFor(Specialite::class)->constrained()->onDelete('cascade');
+            $table->integer('number');
+            $table->integer('level');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('specialites');
     }
 };

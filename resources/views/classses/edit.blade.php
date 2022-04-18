@@ -15,14 +15,40 @@
             @method('put')
 
             <div class="form-group">
-                <label>Nom</label>
-                <input type="text" name="name" value="{{ $classe->name }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="Technologies de l'informatique">
-                @error('name')
+                <label>Specialité:</label>
+                <select select name="specialite_id" class="form-control">
+                    @foreach ($specialites as $specialite)
+                    <option @if($specialite->id == $classe->specalite_id ) checked @endif
+                        value="{{$specialite->id}}">
+                        {{$specialite->name}}
+                        ({{$specialite->department->name}})
+                    </option>
+                    @endforeach
+                </select>
+                @error('specialite_id')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+
+            <div class="form-group">
+                <label>Niveau :</label>
+                <input type="number" name="level" value="{{ $classe->level }}"
+                    class="form-control @error('level') is-invalid @enderror" placeholder="1ere / 2eme">
+                @error('level')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Numero :</label>
+                <input type="number" name="number" value="{{ $classe->number}}"
+                    class="form-control @error('number') is-invalid @enderror" placeholder="1/2/3">
+                @error('number')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
 
             <button class="btn btn-success">Modifier</button>
         </form>

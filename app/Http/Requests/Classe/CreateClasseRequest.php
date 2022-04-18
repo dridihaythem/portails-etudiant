@@ -24,8 +24,9 @@ class CreateClasseRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'name' => 'required|min:4'
+            'specialite_id' => 'required|numeric|exists:specialites,id',
+            'number' => 'required|numeric',
+            'level' => 'required|numeric|min:1|max:5'
         ];
     }
 
@@ -33,8 +34,8 @@ class CreateClasseRequest extends FormRequest
     public function attributes()
     {
         return [
-          
-            'name' => 'nom du classe',
+            'level' => 'le niveau',
+            'number' => 'le numero du classe',
         ];
     }
 }
