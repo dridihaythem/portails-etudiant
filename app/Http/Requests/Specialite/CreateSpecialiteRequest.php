@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Specialites;
+namespace App\Http\Requests\Specialite;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSpecialitesRequest extends FormRequest
+class CreateSpecialiteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,9 @@ class UpdateSpecialitesRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'name' => 'required|min:4'
-        ];
-    }
-
-
-    public function attributes()
-    {
-        return [
-          
-            'name' => 'nom du specialité',
+            'name' => 'required',
+            'department_id' => 'required|integer|exists:departments,id',
+            'prefix' => 'required|min:1|max:10'
         ];
     }
 }

@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Specialites extends Model
+class Specialite extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

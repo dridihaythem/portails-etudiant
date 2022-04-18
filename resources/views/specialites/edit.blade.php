@@ -10,32 +10,40 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route('specialite.update',$specialites->id) }}" method="post">
-            @csrf
+        <form action="{{ route('specialite.update',$specialite->id) }}" method="post">
             @method('put')
+            @csrf
+
             <div class="form-group">
-                <label>Department</label>
-                <select  select name="department" class="form-control" id="pet-select">
-                <option value="1">Technologies de l'informatique</option>
-                <option value="2">Génie électrique</option>
-                <option value="3">Génie de procédés</option>
-                <option value="4">Sciences économiques et de gestion</option>
+                <label>Department :</label>
+                <select name="department_id" class="form-control">
+                    @foreach ($departements as $departement)
+                    <option @checked($specialite->department_id == $departement->id) value="{{ $departement->id }}">
+                        {{ $departement->name}}
+                    </option>
+                    @endforeach
                 </select>
+                @error('department_id')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+
+            <div class="form-group">
+                <label>Nom de la specialité :</label>
+                <input type="text" name="name" value="{{ $specialite->name }}"
+                    class="form-control @error('name') is-invalid @enderror"
+                    placeholder="Développement des systèmes d’information">
                 @error('name')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="form-group">
-                <label>Nom</label>
-                <input type="text" name="name" value="{{ $specialites->name }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="">
-                <label>Prefix</label>
-                    <input type="text" name="prefix" value="{{ $specialites->prefix }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="">
-                    
-                @error('name')
+                <label>Prefix de la specialité :</label>
+                <input type="text" name="prefix" value="{{ $specialite->prefix }}"
+                    class="form-control @error('title') is-invalid @enderror" placeholder="DSI">
+                @error('prefix')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

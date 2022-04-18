@@ -17,40 +17,17 @@
         <table id="datatable" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Departement</th>
                     <th>Nom</th>
                     <th>Prefix</th>
-                    <th>Creé le</th>
-                    <th>Modiifé le</th>
-                    <th>Actions</th>
+                    <th>Crée le</th>
+                    <th>Modifié le</th>
+                    <th>?</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($specialites as $s)
-             <tr>
-            <td>{{$s->id}}</td>
-            <td>{{$s->name}}</td>
-            <td>{{$s->prefix}}</td>
-            <td>{{$s->created_at}}</td>
-            <td>{{$s->updated_at}}</td>
-            <td>
-                    <a class='btn btn-sm btn-success mr-1' href=" {{ route('specialite.edit', $s->id) }} ">
-                        <i class='fa-solid fa-pen-to-square'></i>
-                            Modifier
-                    </a>
-                    <form action="{{ route('specialite.destroy', $s->id) }}  " method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input name='_method' value='DELETE' type='hidden'>
-                    <button class='btn btn-sm btn-danger'>
-                        <i class='fa-solid fa-trash'></i> Supprimer
-                    </button>
-                   </form>
-                             
-            </td>   
-            </tr>
-            @endforeach 
-        </tbody>
+
+            </tbody>
         </table>
     </div>
 </div>
@@ -60,3 +37,54 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 @endpush
 
+@push('js')
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function deleteItem(id){
+        Swal.fire({
+            title: 'Êtes-vous sûr?',
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Supprimez',
+            cancelButtonText: 'Annuler',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let form = document.getElementById(id);
+                    form.submit();
+                }
+        })
+
+    }
+</script>
+<script>
+    $(function () {
+        $("#datatable").DataTable({
+            "language": {
+                "url": "{{ asset('assets/datatable/fr.json') }}"
+            },
+            processing: true,
+            serverSide: true,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            ajax: '{{ route("specialite.index") }}',
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ],
+            order: [[ 0, 'desc' ]],
+            columns: [
+                { data: 'department.name', name: 'department.name', searchable: true, orderable: true},
+                { data: 'name', name: 'name', searchable: true, orderable: true},
+                { data: 'prefix', name: 'prefix', searchable: true, orderable: true},
+                { data: 'created_at', name: 'created_at', searchable: false, orderable: true},
+                { data: 'updated_at', name: 'updated_at', searchable: false, orderable: true},
+                { data: 'actions', name: 'actions', searchable: false, orderable: true},
+            ],
+         })
+
+    });
+</script>
+@endpush

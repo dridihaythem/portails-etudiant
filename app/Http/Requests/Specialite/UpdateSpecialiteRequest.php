@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Specialites;
+namespace App\Http\Requests\Specialite;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSpecialitesRequest extends FormRequest
+class UpdateSpecialiteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

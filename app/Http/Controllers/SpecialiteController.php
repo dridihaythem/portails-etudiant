@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Specialites\CreateSpecialitesRequest;
-use App\Http\Requests\Specialites\UpdateSpecialitesRequest;
+use App\Http\Requests\Specialite\CreateSpecialiteRequest;
+use App\Http\Requests\Specialite\UpdateSpecialiteRequest;
 use App\Models\Department;
-use App\Models\Specialites;
+use App\Models\Specialite;
 use Illuminate\Http\Request;
 
 class SpecialiteController extends Controller
@@ -17,8 +17,36 @@ class SpecialiteController extends Controller
      */
     public function index(Request $request)
     {
-        $specialites = Specialites::all();
-        return view('specialites.index', compact('specialites'));
+        if ($request->ajax()) {
+            $specialites = Specialite::with('department')->get();
+            return datatables()->of($specialites)
+                ->editColumn('created_at', function ($row) {
+                    return $row->created_at->format("d/m/Y");
+                })
+                ->editColumn('updated_at', function ($row) {
+                    return $row->updated_at->format("d/m/Y");
+                })
+                ->addColumn('actions', function ($row) {
+                    $actions = '';
+                    $actions .= "
+                    <a class='btn btn-sm btn-success mr-1' href=" . route('specialite.edit', $row->id) . ">
+                        <i class='fa-solid fa-pen-to-square'></i>
+                            Modifier
+                    </a>";
+                    $actions .= "
+                    <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('specialite.destroy', $row->id) . ">
+                    <input name='_method' value='DELETE' type='hidden'>
+                    " . csrf_field() . "
+                    <button class='btn btn-sm btn-danger'>
+                        <i class='fa-solid fa-trash'></i> Supprimer
+                    </button>
+                    </form>";
+                    return $actions;
+                })
+                ->rawColumns(['id', 'name', 'actions'])
+                ->toJson();
+        }
+        return view('specialites.index');
     }
 
     /**
@@ -38,9 +66,9 @@ class SpecialiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateSpecialitesRequest $request)
+    public function store(CreateSpecialiteRequest $request)
     {
-        Specialites::create($request->validated());
+        Specialite::create($request->validated());
 
         return redirect()->route('specialite.index');
     }
@@ -51,10 +79,10 @@ class SpecialiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Specialite $specialite)
     {
-        $specialites = Specialites::findOrFail($id);
-        return view('specialites.edit', compact('specialites'));
+        $departements = Department::all();
+        return view('specialites.edit', compact('specialite', 'departements'));
     }
 
     /**
@@ -64,13 +92,10 @@ class SpecialiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSpecialiteRequest $request, Specialite $specialite)
     {
-        $specialities = Specialites::find($id);
-        $specialities->name = $request->name;
-        $specialities->department_id = $request->department;
-        $specialities->prefix = $request->prefix;
-        $specialities->save();
+        $specialite->update($request->validated());
+
         return redirect()->route('specialite.index');
     }
 
@@ -80,9 +105,11 @@ class SpecialiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Specialite $specialite)
     {
-        Specialites::find($id)->delete();
-        return redirect()->route('specialite.index');
+        $specialite->delete();
+
+        return redirect()->route('specialite.index')
+            ->with('success', 'La specialité a été supprimé');
     }
 }
