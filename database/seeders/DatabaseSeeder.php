@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         Student::factory(50)->create();
         $this->call(DepartmentTableSeeder::class);
         $this->call(ClasseTableSeeder::class);
+        $this->call(SpecialiteTableSeeder::class);
     }
 }
