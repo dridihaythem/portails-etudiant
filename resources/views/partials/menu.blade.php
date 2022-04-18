@@ -25,10 +25,18 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+                <li class="nav-item">
+                    <a href="{{ route('statistic')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-chart-area"></i>
+                        <p>
+                            Statistiques
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fa-solid fa-building-columns"></i>
                         <p>
                             Les Départements
                             <i class="fas fa-angle-left right"></i>
@@ -77,7 +85,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fa-solid fa-users"></i>
                         <p>
                             Les classes
                             <i class="fas fa-angle-left right"></i>
