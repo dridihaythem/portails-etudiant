@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Specialites\CreateSpecialitesRequest;
 use App\Http\Requests\Specialites\UpdateSpecialitesRequest;
+use App\Models\Department;
 use App\Models\Specialites;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,8 @@ class SpecialiteController extends Controller
      */
     public function index(Request $request)
     {
-            $specialites = Specialites::all();
-        return view('specialites.index',compact('specialites'));
+        $specialites = Specialites::all();
+        return view('specialites.index', compact('specialites'));
     }
 
     /**
@@ -27,7 +28,8 @@ class SpecialiteController extends Controller
      */
     public function create()
     {
-        return view('specialites.create');
+        $departements = Department::all();
+        return view('specialites.create', ['departements' => $departements]);
     }
 
     /**
@@ -36,13 +38,10 @@ class SpecialiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSpecialitesRequest $request)
     {
-        $specialities = new Specialites();
-        $specialities->name = $request->name;
-        $specialities->department_id = $request->department;
-        $specialities->prefix = $request->prefix;
-        $specialities->save();
+        Specialites::create($request->validated());
+
         return redirect()->route('specialite.index');
     }
 
@@ -53,8 +52,9 @@ class SpecialiteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {    $specialites = Specialites::findOrFail($id);
-        return view('specialites.edit',compact('specialites'));
+    {
+        $specialites = Specialites::findOrFail($id);
+        return view('specialites.edit', compact('specialites'));
     }
 
     /**
@@ -66,8 +66,8 @@ class SpecialiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $specialities = Specialites::find($id); 
-       $specialities->name = $request->name;
+        $specialities = Specialites::find($id);
+        $specialities->name = $request->name;
         $specialities->department_id = $request->department;
         $specialities->prefix = $request->prefix;
         $specialities->save();
@@ -82,8 +82,7 @@ class SpecialiteController extends Controller
      */
     public function destroy($id)
     {
-      Specialites::find($id)->delete();
-      return redirect()->route('specialite.index');
-
+        Specialites::find($id)->delete();
+        return redirect()->route('specialite.index');
     }
 }

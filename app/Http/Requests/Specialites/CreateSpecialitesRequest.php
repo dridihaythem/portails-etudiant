@@ -24,17 +24,9 @@ class CreateSpecialitesRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'name' => 'required|min:4'
-        ];
-    }
-
-
-    public function attributes()
-    {
-        return [
-          
-            'name' => 'nom du specialité',
+            'name' => 'required',
+            'department_id' => 'required|integer|exists:departments,id',
+            'prefix' => 'required|min:1|max:10'
         ];
     }
 }

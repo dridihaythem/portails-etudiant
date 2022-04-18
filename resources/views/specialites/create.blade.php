@@ -14,29 +14,33 @@
             @csrf
 
             <div class="form-group">
-                <label>Department</label>
-                <select  select name="department" class="form-control" id="pet-select">
-                <option value="1">Technologies de l'informatique</option>
-                <option value="2">Génie électrique</option>
-                <option value="3">Génie de procédés</option>
-                <option value="4">Sciences économiques et de gestion</option>
+                <label>Department :</label>
+                <select name="department_id" class="form-control">
+                    @foreach ($departements as $departement)
+                    <option value="{{ $departement->id }}">{{ $departement->name}}</option>
+                    @endforeach
                 </select>
-                @error('name')
+                @error('department_id')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
 
             <div class="form-group">
-                <label>Nom de la specialité</label>
+                <label>Nom de la specialité :</label>
                 <input type="text" name="name" value="{{ old('name') }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="Example">
-                <label>Prefix de la specialité</label>
-                <input type="text" name="prefix" value="{{ old('name') }}"
-                    class="form-control @error('title') is-invalid @enderror"
-                    placeholder="Example">
+                    class="form-control @error('name') is-invalid @enderror"
+                    placeholder="Développement des systèmes d’information">
                 @error('name')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Prefix de la specialité :</label>
+                <input type="text" name="prefix" value="{{ old('prefix') }}"
+                    class="form-control @error('title') is-invalid @enderror" placeholder="DSI">
+                @error('prefix')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
