@@ -17,8 +17,15 @@ class SpecialiteController extends Controller
      */
     public function index(Request $request)
     {
+        // return  $specialites = Specialite::with('department')
+        //     ->when($request->has('department_id'), function ($query) use ($request) {
+        //         return $query->where('department_id', $request->department_id);
+        //     })->get();
         if ($request->ajax()) {
-            $specialites = Specialite::with('department')->get();
+            $specialites = Specialite::with('department')
+                ->when($request->department_id, function ($query) use ($request) {
+                    return $query->where('department_id', $request->department_id);
+                })->get();
             return datatables()->of($specialites)
                 ->editColumn('created_at', function ($row) {
                     return $row->created_at->format("d/m/Y");

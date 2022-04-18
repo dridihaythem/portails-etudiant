@@ -27,6 +27,7 @@ class DepartmentController extends Controller
                 })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
+                    $actions .= "<a class='btn btn-sm btn-warning mr-1' href=" . route('specialite.index') . "?department_id={$row->id}>Les Specialités</a>";
                     $actions .= "
                     <a class='btn btn-sm btn-success mr-1' href=" . route('department.edit', $row->id) . ">
                         <i class='fa-solid fa-pen-to-square'></i>
@@ -36,7 +37,7 @@ class DepartmentController extends Controller
                     <form id='{$row->id}' class='d-inline-block' onsubmit='event.preventDefault();deleteItem({$row->id})' method='post' action=" . route('department.destroy', $row->id) . ">
                     <input name='_method' value='DELETE' type='hidden'>
                     " . csrf_field() . "
-                    <button class='btn btn-sm btn-danger'>
+                    <button class='btn btn-sm btn-danger mr-1'>
                         <i class='fa-solid fa-trash'></i> Supprimer
                     </button>
                     </form>";

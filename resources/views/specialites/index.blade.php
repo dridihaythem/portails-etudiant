@@ -70,7 +70,7 @@
             serverSide: true,
             responsive: true,
             dom: '<"html5buttons"B>lTfgitp',
-            ajax: '{{ route("specialite.index") }}',
+            ajax: '{{ route("specialite.index") }}?department_id={{request()->department_id }}',
             buttons: [
                 'copy', 'excel', 'pdf'
             ],

@@ -54,21 +54,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Les spécialités
+                            Les Specialités
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('specialite.index') }}" class="nav-link">
                                 <i class="fas fa-solid fa-list nav-icon"></i>
-                                <p>La liste des spécialités</p>
+                                <p>La liste des Specialités</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('specialite.create') }}" class="nav-link">
                                 <i class="fa fa-circle-plus nav-icon"></i>
-                                <p>Ajouter une spécialité</p>
+                                <p>Ajouter une specialité</p>
                             </a>
                         </li>
                     </ul>
@@ -98,31 +98,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Les Specialités
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('specialite.index') }}" class="nav-link">
-                                <i class="fas fa-solid fa-list nav-icon"></i>
-                                <p>La liste des Specialités</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('specialite.create') }}" class="nav-link">
-                                <i class="fa fa-circle-plus nav-icon"></i>
-                                <p>Ajouter une specialité</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -144,7 +121,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
 
