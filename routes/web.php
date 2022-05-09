@@ -26,4 +26,4 @@ Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic
 Route::resource('department', DepartmentController::class)->except('show');
 Route::resource('classe', ClasseController::class)->except('show');
 Route::resource('specialite', SpecialiteController::class)->except('show');
-Route::resource('students', StudentController::class)->except('show');
+Route::resource('students', StudentController::class);

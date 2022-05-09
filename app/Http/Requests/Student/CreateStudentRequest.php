@@ -24,9 +24,14 @@ class CreateStudentRequest extends FormRequest
     public function rules()
     {
         return [
+            'classe_id' => 'required|numeric',
             'cin' => 'required|numeric|unique:students,cin',
             'first_name' => 'required|min:3|max:20',
             'last_name' => 'required|min:3|max:20',
+            'photo' => 'sometimes|image',
+            'birthday' => 'required|date',
+            'address' => 'required',
+            'phone' => 'sometimes',
         ];
     }
 
@@ -34,7 +39,7 @@ class CreateStudentRequest extends FormRequest
     {
         return [
             'first_name' => 'nom',
-            'last_name' => 'prenom'
+            'last_name' => 'prenom',
         ];
     }
 }

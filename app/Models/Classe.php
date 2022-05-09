@@ -11,8 +11,15 @@ class Classe extends Model
 
     protected $guarded = [];
 
+    protected $with = ['specialite'];
+
     public function specialite()
     {
         return $this->belongsTo(Specialite::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return "{$this->specialite->prefix}{$this->level}{$this->number}";
     }
 }

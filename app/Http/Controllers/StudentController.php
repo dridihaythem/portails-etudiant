@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Student\CreateStudentRequest;
 use App\Http\Requests\Student\UpdateStudentRequest;
+use App\Models\Classe;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -25,9 +28,16 @@ class StudentController extends Controller
                 ->editColumn('updated_at', function ($row) {
                     return $row->updated_at->format("d/m/Y");
                 })
-                ->addColumn('classe', '---')
+                ->addColumn('classe', function ($row) {
+                    return $row->classe->name;
+                })
                 ->addColumn('actions', function ($row) {
                     $actions = '';
+                    $actions .= "
+                    <a class='btn btn-sm btn-primary mr-1' href=" . route('students.show', $row->id) . ">
+                        <i class='fa-solid fa-eye'></i>
+                        Détails
+                    </a>";
                     $actions .= "
                     <a class='btn btn-sm btn-success mr-1' href=" . route('students.edit', $row->id) . ">
                         <i class='fa-solid fa-pen-to-square'></i>
@@ -56,7 +66,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $classes = Classe::all();
+        return view('students.create', ['classes' => $classes]);
     }
 
     /**
@@ -67,10 +78,23 @@ class StudentController extends Controller
      */
     public function store(CreateStudentRequest $request)
     {
-        Student::create($request->validated());
+        $data = $request->validated();
+        $data['password'] = Hash::make($request->cin);
+
+        if ($request->hasFile('photo')) {
+            $photo = Storage::disk('students')->put('', $request->file('photo'));
+            $data['photo'] = $photo;
+        }
+
+        Student::create($data);
 
         return redirect()->route('students.index')
             ->with('success', "L'etudiant a été crée");
+    }
+
+    public function show(Student $student)
+    {
+        return view('students.show', ['student' => $student]);
     }
 
     /**
@@ -81,7 +105,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('students.edit', ['student' => $student]);
+        $classes = Classe::all();
+        return view('students.edit', ['classes' => $classes, 'student' => $student]);
     }
 
     /**
@@ -93,7 +118,15 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->update($request->validated());
+
+        $data = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            $photo = Storage::disk('students')->put('', $request->file('photo'));
+            $data['photo'] = $photo;
+        }
+
+        $student->update($data);
 
         return redirect()->route('students.index')
             ->with('success', "L'etudiant a été modifié");

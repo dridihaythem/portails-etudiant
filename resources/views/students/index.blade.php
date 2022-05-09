@@ -18,11 +18,12 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>CIN</th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Classe</th>
                     <th>Creé le</th>
-                    <th>Modiifé le</th>
+                    <th>Modifé le</th>
                     <th>?</th>
                 </tr>
             </thead>
@@ -78,6 +79,7 @@
             order: [[ 0, 'desc' ]],
             columns: [
                 { data: 'id', name: 'id', searchable: true, orderable: true},
+                { data: 'cin', name: 'cin', searchable: true, orderable: false},
                 { data: 'first_name', name: 'first_name', searchable: true, orderable: true},
                 { data: 'last_name', name: 'last_name', searchable: true, orderable: true},
                 { data: 'classe', name: 'classe', searchable: true, orderable: true},
