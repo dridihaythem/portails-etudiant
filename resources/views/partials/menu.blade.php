@@ -169,6 +169,17 @@
 
                 @endif
 
+                @if(Auth::guard('students')->check())
+                <li class="nav-item">
+                    <a href="{{ route('certificate-of-attendance.index')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-file"></i>
+                        <p>
+                            Attestation de présence
+                        </p>
+                    </a>
+                </li>
+                @endif
+
                 <li class="nav-item">
                     <a href="{{ route('logout')}}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="

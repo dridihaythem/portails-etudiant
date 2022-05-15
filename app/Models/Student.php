@@ -15,9 +15,18 @@ class Student extends Authenticatable
 
     protected $with = ['classe'];
 
+    protected $casts = [
+        'birthday' => 'date',
+    ];
+
     public function classe()
     {
         return $this->belongsTo(Classe::class);
+    }
+
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
     }
 
     public function getPhotoAttribute($value)
