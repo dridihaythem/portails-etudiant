@@ -7,24 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
 
-class Student extends Authenticatable
+class Admin extends  Authenticatable
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    protected $with = ['classe'];
-
-    public function classe()
-    {
-        return $this->belongsTo(Classe::class);
-    }
-
     public function getPhotoAttribute($value)
     {
         if ($value == null) {
-            return Storage::disk('students')->url('default.png');
+            return Storage::disk('admins')->url('default.png');
         }
-        return Storage::disk('students')->url($value);
+        return Storage::disk('admins')->url($value);
     }
 }

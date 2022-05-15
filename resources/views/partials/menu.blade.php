@@ -3,11 +3,22 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                    alt="User Image">
+                <img src="{{ asset(Auth::user()->photo) }}" class="img-circle elevation-2"
+                    style="width:50px;height:50px" />
             </div>
-            <div class="info">
-                <a href="#" class="d-block">User</a>
+            <div class=" info">
+                <a href="#" class="d-block">
+                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                    <span class="d-block mt-1 badge badge-pill badge-primary">
+                        <i class="fa-solid fa-user"></i>
+                        @if(Auth::guard('admins')->check())
+                        Admin
+                        @elseif(Auth::guard('students')->check())
+                        Etudiant
+                        @endif
+                    </span>
+
+                </a>
             </div>
         </div>
 
@@ -25,6 +36,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+                @if(Auth::guard('admins')->check())
                 <li class="nav-item">
                     <a href="{{ route('statistic')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-chart-area"></i>
@@ -129,6 +141,21 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                @endif
+
+                <li class="nav-item">
+                    <a href="{{ route('logout')}}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="
+                        nav-link">
+                        <i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i>
+                        <p>
+                            Se déconnecter
+                        </p>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
