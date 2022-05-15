@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SpecialiteController;
@@ -29,6 +30,7 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('classe', ClasseController::class)->except('show');
     Route::resource('specialite', SpecialiteController::class)->except('show');
     Route::resource('students', StudentController::class);
+    Route::resource('admins', AdminController::class);
 });
 
 

@@ -142,6 +142,31 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-users"></i>
+                        <p>
+                            Les Administrateurs
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admins.index') }}" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des administrateurs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admins.create') }}" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter un administrateurs</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 @endif
 
                 <li class="nav-item">
