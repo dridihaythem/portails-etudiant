@@ -7,6 +7,7 @@ use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\Student\AttendanceCertificate;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\User\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,5 +42,8 @@ Route::group(['middleware' => 'auth:students'], function () {
 });
 
 Auth::routes();
+
+
+Route::resource('password', UpdatePasswordController::class)->only(['index', 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

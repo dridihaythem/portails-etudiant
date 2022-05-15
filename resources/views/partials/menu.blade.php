@@ -3,20 +3,29 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset(Auth::user()->photo) }}" class="img-circle elevation-2"
+                @if(Auth::guard('admins')->check())
+                <img src="{{ asset(Auth::guard('admins')->user()->photo) }}" class="img-circle elevation-2"
                     style="width:50px;height:50px" />
+                @elseif(Auth::guard('students')->check())
+                <img src="{{ asset(Auth::guard('students')->user()->photo) }}" class="img-circle elevation-2"
+                    style="width:50px;height:50px" />
+                @endif
             </div>
-            <div class=" info">
+            <div class="info">
                 <a href="#" class="d-block">
-                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                    @if(Auth::guard('admins')->check())
+                    {{ Auth::guard('admins')->user()->first_name }} {{ Auth::guard('admins')->user()->last_name }}
                     <span class="d-block mt-1 badge badge-pill badge-primary">
                         <i class="fa-solid fa-user"></i>
-                        @if(Auth::guard('admins')->check())
                         Admin
-                        @elseif(Auth::guard('students')->check())
-                        Etudiant
-                        @endif
                     </span>
+                    @elseif(Auth::guard('students')->check())
+                    {{ Auth::guard('students')->user()->first_name }} {{ Auth::guard('students')->user()->last_name }}
+                    <span class="d-block mt-1 badge badge-pill badge-primary">
+                        <i class="fa-solid fa-user"></i>
+                        Etudiant
+                    </span>
+                    @endif
 
                 </a>
             </div>
@@ -179,6 +188,15 @@
                     </a>
                 </li>
                 @endif
+
+                <li class="nav-item">
+                    <a href="{{ route('password.index')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-key"></i>
+                        <p>
+                            Modifier le mot de passe
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{ route('logout')}}"
