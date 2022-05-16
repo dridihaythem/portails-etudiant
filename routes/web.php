@@ -54,3 +54,7 @@ Route::resource('depot/rapports', DepotRapportController::class, ['as' => 'depot
 
 Route::get('/settings/date-depots-rapports', [DateDepotRapportController::class, 'index'])->name('settings.date-depots-rapports');
 Route::post('/settings/date-depots-rapports', [DateDepotRapportController::class, 'update']);
+
+Route::get('meet', function () {
+    return view('meet');
+})->name('meet');

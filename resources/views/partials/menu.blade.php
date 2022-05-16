@@ -198,6 +198,14 @@
 
                 @if(Auth::guard('students')->check())
                 <li class="nav-item">
+                    <a href="{{ route('meet')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-video"></i>
+                        <p>
+                            Cours en ligne
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-folder"></i>
                         <i class="fa-solid fa-folder-arrow-up"></i>
