@@ -3,9 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Settings\DateDepotRapportController;
 use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\Student\AttendanceCertificate;
+use App\Http\Controllers\Student\DepotRapportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\User\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +49,8 @@ Auth::routes();
 Route::resource('password', UpdatePasswordController::class)->only(['index', 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('depot/rapports', DepotRapportController::class, ['as' => 'depot'])->middleware('auth:students');
+
+Route::get('/settings/date-depots-rapports', [DateDepotRapportController::class, 'index'])->name('settings.date-depots-rapports');
+Route::post('/settings/date-depots-rapports', [DateDepotRapportController::class, 'update']);

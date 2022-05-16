@@ -29,6 +29,11 @@ class Student extends Authenticatable
         return $this->hasMany(Certificate::class);
     }
 
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
     public function getPhotoAttribute($value)
     {
         if ($value == null) {

@@ -176,9 +176,51 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-gears"></i>
+                        <p>
+                            Les Parametres
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('settings.date-depots-rapports') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-calendar"></i>
+                                <p> Date depots des rapports</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 @endif
 
                 @if(Auth::guard('students')->check())
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-folder"></i>
+                        <i class="fa-solid fa-folder-arrow-up"></i>
+                        <p>
+                            Les Rapports des stages
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('depot.rapports.create') }}" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Dépôts D'un rapport</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('depot.rapports.index') }}" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des rapports</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('certificate-of-attendance.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-file"></i>
