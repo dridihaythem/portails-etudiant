@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Settings\DateDepotRapportController;
 use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\StatisticController;
@@ -58,3 +59,6 @@ Route::post('/settings/date-depots-rapports', [DateDepotRapportController::class
 Route::get('meet', function () {
     return view('meet');
 })->name('meet');
+
+
+Route::resource('news', NewsController::class);
