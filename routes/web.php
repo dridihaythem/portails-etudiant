@@ -11,6 +11,8 @@ use App\Http\Controllers\Student\AttendanceCertificate;
 use App\Http\Controllers\Student\DepotRapportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\User\UpdatePasswordController;
+use App\Http\Controllers\MatierController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,10 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('specialite', SpecialiteController::class)->except('show');
     Route::resource('students', StudentController::class);
     Route::resource('admins', AdminController::class);
+    Route::resource('matiers', MatierController::class);
+    Route::get('file-upload', [FileController::class, 'index']);
+    Route::post('file-upload', [FileController::class, 'store'])->name('file.store');
+
 });
 
 Route::get('/certificate-of-attendance/{key}', [AttendanceCertificate::class, 'show'])->name('certificate-of-attendance.show');

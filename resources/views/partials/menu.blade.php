@@ -175,6 +175,52 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Les Matiers
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('matiers.index') }}" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des Matiers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('matiers.create') }}" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter une Matier</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Les Rapports de stage
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-solid fa-list nav-icon"></i>
+                                <p>La liste des annciens rapport de stage</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-circle-plus nav-icon"></i>
+                                <p>Ajouter un rapport de stage</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -253,6 +299,7 @@
                         </li>
                     </ul>
                 </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('certificate-of-attendance.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-file"></i>
