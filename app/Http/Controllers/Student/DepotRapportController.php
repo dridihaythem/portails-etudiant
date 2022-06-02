@@ -22,6 +22,10 @@ class DepotRapportController extends Controller
         if (now() < $date_debut_depot_rapports || now() >= $date_fin_depot_rapports) {
             return false;
         }
+
+        if (Auth::guard('students')->user()->reports()->count() == 1) {
+            return false;
+        }
         return true;
     }
 
@@ -65,9 +69,6 @@ class DepotRapportController extends Controller
         if ($this->checkdate() == false) {
             return redirect()->route('depot.rapports.index');
         }
-
-        //@TODO:
-        // check if students has already upload this report
 
         Report::create([
             'student_id' => Auth::guard('students')->user()->id,

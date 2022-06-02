@@ -24,7 +24,7 @@ class DateDepotRapportController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'date_debut_depot_rapports' => 'required|date|after_or_equal:today',
+            'date_debut_depot_rapports' => 'required|date',
             'date_fin_depot_rapports' => 'required|date|after:date_debut_depot_rapports',
         ]);
 
