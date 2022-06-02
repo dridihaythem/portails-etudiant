@@ -1,15 +1,22 @@
 @extends('layouts.guest')
-
+@section('title',"S'authentifer")
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i> S'authentifer
                 </div>
 
                 <div class="card-body">
+                    @if (Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-times-circle"></i>
+                        {{ Session::get('error') }}
+                    </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

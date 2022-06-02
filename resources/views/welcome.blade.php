@@ -1,5 +1,5 @@
 @extends('layouts.guest')
-
+@section('title',"Portail Etudiant")
 @section('content')
 <div class="container">
     <div class="row">

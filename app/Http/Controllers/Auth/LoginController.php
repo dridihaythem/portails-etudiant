@@ -54,7 +54,7 @@ class LoginController extends Controller
             return redirect()->route('statistic');
         } else {
             return redirect()->route('login')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', "Le CIN ou le mot de passe est incorrect.");
         }
     }
 }
