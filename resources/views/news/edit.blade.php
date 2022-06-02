@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Ajouter une Actualité')
+@section('title','Modifier une Actualité')
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet" />
 @endpush
@@ -19,17 +19,18 @@
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">
-            <i class="fa fa-circle-plus"></i>
-            Ajouter une Actualité
+            <i class="fa-solid fa-pen-to-square"></i>
+            Modifier une Actualité
         </h3>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('news.store') }}" method="post">
+        <form action="{{ route('news.update',$news) }}" method="post">
+            @method('put')
             @csrf
             <div class="form-group">
                 <label>Tiltre <span class="text-danger">*</span> :</label>
-                <input type="text" name="title" value="{{ old('title') }}"
+                <input type="text" name="title" value="{{ $news->title }}"
                     class="form-control @error('title') is-invalid @enderror">
                 @error('title')
                 <div class="text-danger">{{ $message }}</div>
@@ -38,18 +39,13 @@
 
             <div class="form-group">
                 <label>Contenu <span class="text-danger">*</span> :</label>
-                <textarea id="summernote" name="content">{{ old('content') }}</textarea>
+                <textarea id="summernote" name="content">{{ $news->content }}</textarea>
                 @error('content')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="from-group mb-1">
-                <input name="notification" type="checkbox" @checked(old('notification'))>
-                Passer en urgence
-            </div>
-
-            <button class="btn btn-success">Ajouter</button>
+            <button class="btn btn-success">Enregister</button>
         </form>
     </div>
 </div>

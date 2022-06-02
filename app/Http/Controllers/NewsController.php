@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Http;
 
 class NewsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admins');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return view('news.index', ['news' => News::orderBy('id', 'desc')->paginate(10)]);
     }
 
     /**
@@ -41,18 +47,21 @@ class NewsController extends Controller
             'content' => 'required'
         ]);
 
-        Http::withHeaders([
-            'Authorization' => 'Basic ' . env("ONESIGNAL_APP_KEY")
-        ])->post('https://onesignal.com/api/v1/notifications', [
-            'app_id' => env("ONESIGNAL_APP_ID"),
-            'included_segments' =>  ["Subscribed Users"],
-            'headings' => ["en" => $request->title],
-            'contents' => ["en" => strip_tags($request->content)],
-        ]);
+        if ($request->notification) {
+            Http::withHeaders([
+                'Authorization' => 'Basic ' . env("ONESIGNAL_APP_KEY")
+            ])->post('https://onesignal.com/api/v1/notifications', [
+                'app_id' => env("ONESIGNAL_APP_ID"),
+                'included_segments' =>  ["Subscribed Users"],
+                'headings' => ["en" => $request->title],
+                'contents' => ["en" => strip_tags($request->content)],
+            ]);
+        }
 
         News::create(['title' => $request->title, 'content' => $request->content]);
 
-        return redirect()->back();
+        return redirect()->route('news.index')
+            ->with('success', "L'actualité a été crée");
     }
 
     /**
@@ -63,7 +72,6 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
     }
 
     /**
@@ -74,7 +82,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('news.edit', ['news' => $news]);
     }
 
     /**
@@ -86,7 +94,15 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        $news->update(['title' => $request->title, 'content' => $request->content]);
+
+        return redirect()->route('news.index')
+            ->with('success', "L'actualité a été modifiée");
     }
 
     /**
@@ -97,6 +113,8 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->delete();
+        return redirect()->route('news.index')
+            ->with('success', "L'actualité a été supprimée");
     }
 }

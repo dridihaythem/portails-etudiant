@@ -41,7 +41,6 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('matiers', MatierController::class);
     Route::get('file-upload', [FileController::class, 'index']);
     Route::post('file-upload', [FileController::class, 'store'])->name('file.store');
-
 });
 
 Route::get('/certificate-of-attendance/{key}', [AttendanceCertificate::class, 'show'])->name('certificate-of-attendance.show');
