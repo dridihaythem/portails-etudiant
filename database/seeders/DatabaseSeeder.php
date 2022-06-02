@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             ClasseTableSeeder::class,
             StudentTableSeeder::class,
             AdminTableSeeder::class,
-            SettingTableSeeder::class
+            SettingTableSeeder::class,
+            NewsTableSeeder::class
         ]);
     }
 }

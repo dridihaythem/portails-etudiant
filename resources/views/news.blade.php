@@ -25,26 +25,17 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="bg-white p-2">
-                <h3>Les actualités : </h3>
-                <hr>
-                @foreach ($news as $new)
-                <div class="card mb-3 shadow">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$new->title}}</h5>
-                        <hr>
-                        <small>
-                            <i class="fa-solid fa-clock"></i> {{ $new->created_at }}
-                        </small>
-                        <hr>
-                        <p class="card-text">{{ Str::limit($new->content,200) }}</p>
-                        <a href="{{ route('guest.news',['id'=>$new->id]) }}" class="btn btn-primary">
-                            <i class="fa-solid fa-eye"></i> Affichier
-                        </a>
-                    </div>
+            <div class="card mb-3 shadow">
+                <div class="card-header">
+                    {{$news->title}}
                 </div>
-                @endforeach
-                {{ $news->links() }}
+                <div class="card-body">
+                    <small>
+                        <i class="fa-solid fa-clock"></i> {{ $news->created_at }}
+                    </small>
+                    <hr>
+                    <p class="card-text">{{ $news->content }}</p>
+                </div>
             </div>
         </div>
     </div>

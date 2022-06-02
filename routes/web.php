@@ -13,6 +13,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\User\UpdatePasswordController;
 use App\Http\Controllers\MatierController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\Guest\NewsController as GuestNewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GuestNewsController::class, 'index'])->name('index');
+Route::get('/news/{id}', [GuestNewsController::class, 'show'])->name('guest.news');
 
 
 Route::group(['middleware' => 'auth:admins'], function () {
