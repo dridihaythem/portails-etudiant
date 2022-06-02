@@ -15,13 +15,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('enseignants', function (Blueprint $table) {
+            $table->id();
             $table->foreignIdFor(Department::class)->constrained()->onDelete('cascade');
             $table->integer('cin');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('photo')->nullable();
             $table->string('password');
-            $table->boolean('chef')->default(false);
             $table->timestamps();
         });
     }

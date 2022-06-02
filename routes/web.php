@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Settings\DateDepotRapportController;
 use App\Http\Controllers\SpecialiteController;
@@ -39,6 +40,7 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('students', StudentController::class);
     Route::resource('admins', AdminController::class);
     Route::resource('matieres', MatierController::class);
+    Route::resource('enseignants', EnseignantController::class);
     Route::get('file-upload', [FileController::class, 'index']);
     Route::post('file-upload', [FileController::class, 'store'])->name('file.store');
 });
