@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
   
 use App\Models\Matier;
+use App\Models\Specialite;
 use Illuminate\Http\Request;
   
 class MatierController extends Controller
@@ -26,8 +27,8 @@ class MatierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('matiers.create');
+    {   $specialites = Specialite::all();
+        return view('matiers.create', compact('specialites'));
     }
   
     /**
@@ -41,6 +42,7 @@ class MatierController extends Controller
         $request->validate([
             'libelle' => 'required',
             'coefficient' => 'required',
+            'specialite_id '=>'required'
         ]);
       
         Matier::create($request->all());

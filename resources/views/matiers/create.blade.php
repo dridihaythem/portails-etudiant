@@ -27,6 +27,18 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label>Specialites :</label>
+                <select name="specialites_id" class="form-control">
+                    @foreach ($specialites as $specialite)
+                    <option value="{{ $specialite->id }}">{{ $specialite->name}}</option>
+                    @endforeach
+                </select>
+                @error('specialite_id')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+</div>
+
             <button class="btn btn-success">Ajouter</button>
         </form>
     </div>
