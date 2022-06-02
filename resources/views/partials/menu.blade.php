@@ -179,21 +179,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Les Matiers
+                            Les Matieres
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('matiers.index') }}" class="nav-link">
+                            <a href="{{ route('matieres.index') }}" class="nav-link">
                                 <i class="fas fa-solid fa-list nav-icon"></i>
-                                <p>La liste des Matiers</p>
+                                <p>La liste des matieres</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('matiers.create') }}" class="nav-link">
+                            <a href="{{ route('matieres.create') }}" class="nav-link">
                                 <i class="fa fa-circle-plus nav-icon"></i>
-                                <p>Ajouter une Matier</p>
+                                <p>Ajouter une matiere</p>
                             </a>
                         </li>
                     </ul>
@@ -299,7 +299,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="{{ route('certificate-of-attendance.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-file"></i>

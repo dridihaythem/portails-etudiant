@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('specialite', SpecialiteController::class)->except('show');
     Route::resource('students', StudentController::class);
     Route::resource('admins', AdminController::class);
-    Route::resource('matiers', MatierController::class);
+    Route::resource('matieres', MatierController::class);
     Route::get('file-upload', [FileController::class, 'index']);
     Route::post('file-upload', [FileController::class, 'store'])->name('file.store');
 });
