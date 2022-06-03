@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label>Date Naissance <span class="text-danger">*</span> :</label>
-                <input type="date" name="birthday" value="{{ $student->birthday }}"
+                <input type="date" name="birthday" value="{{ $student->birthday->format('Y-m-d') }}"
                     class="form-control @error('birthday') is-invalid @enderror">
                 @error('birthday')
                 <div class="text-danger">{{ $message }}</div>
