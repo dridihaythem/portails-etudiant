@@ -34,7 +34,7 @@
                         <i class="fa-solid fa-clock"></i> {{ $news->created_at }}
                     </small>
                     <hr>
-                    <p class="card-text">{{ $news->content }}</p>
+                    <p class="card-text">{!! $news->content !!}</p>
                 </div>
             </div>
         </div>

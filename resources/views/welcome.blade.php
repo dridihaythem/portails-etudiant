@@ -37,7 +37,7 @@
                             <i class="fa-solid fa-clock"></i> {{ $new->created_at }}
                         </small>
                         <hr>
-                        <p class="card-text">{{ Str::limit($new->content,200) }}</p>
+                        <p class="card-text">{!! Str::limit($new->content,200) !!}</p>
                         <a href="{{ route('guest.news',['id'=>$new->id]) }}" class="btn btn-primary">
                             <i class="fa-solid fa-eye"></i> Affichier
                         </a>

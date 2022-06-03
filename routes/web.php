@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [GuestNewsController::class, 'index'])->name('index');
-Route::get('/news/{id}', [GuestNewsController::class, 'show'])->name('guest.news');
+Route::get('/actualite/{id}', [GuestNewsController::class, 'show'])->name('guest.news');
 
 
 Route::group(['middleware' => 'auth:admins'], function () {
