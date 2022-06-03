@@ -9,6 +9,9 @@
                 @elseif(Auth::guard('students')->check())
                 <img src="{{ asset(Auth::guard('students')->user()->photo) }}" class="img-circle elevation-2"
                     style="width:50px;height:50px" />
+                @elseif(Auth::guard('enseignants')->check())
+                <img src="{{ asset(Auth::guard('enseignants')->user()->photo) }}" class="img-circle elevation-2"
+                    style="width:50px;height:50px" />
                 @endif
             </div>
             <div class="info">
@@ -24,6 +27,13 @@
                     <span class="d-block mt-1 badge badge-pill badge-primary">
                         <i class="fa-solid fa-user"></i>
                         Etudiant
+                    </span>
+                    @elseif(Auth::guard('enseignants')->check())
+                    {{ Auth::guard('enseignants')->user()->first_name }} {{
+                    Auth::guard('enseignants')->user()->last_name }}
+                    <span class="d-block mt-1 badge badge-pill badge-primary">
+                        <i class="fa-solid fa-user"></i>
+                        enseignants
                     </span>
                     @endif
 
@@ -221,29 +231,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Les Rapports de stage
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-solid fa-list nav-icon"></i>
-                                <p>La liste des annciens rapport de stage</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-plus nav-icon"></i>
-                                <p>Ajouter un rapport de stage</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -328,6 +315,17 @@
                         <i class="nav-icon fa-solid fa-file"></i>
                         <p>
                             Attestation de présence
+                        </p>
+                    </a>
+                </li>
+                @endif
+
+                @if(Auth::guard('enseignants')->check())
+                <li class="nav-item">
+                    <a href="{{ route('rapports')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-folder"></i>
+                        <p>
+                            La liste des rapports
                         </p>
                     </a>
                 </li>

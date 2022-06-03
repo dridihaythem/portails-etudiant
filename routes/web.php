@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Enseignant\RapportController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Settings\DateDepotRapportController;
@@ -43,6 +44,11 @@ Route::group(['middleware' => 'auth:admins'], function () {
     Route::resource('enseignants', EnseignantController::class);
     Route::get('file-upload', [FileController::class, 'index']);
     Route::post('file-upload', [FileController::class, 'store'])->name('file.store');
+});
+
+Route::group(['middleware' => 'auth:enseignants'], function () {
+    Route::get('/rapports', [RapportController::class, 'index'])->name('rapports');
+    Route::get('/rapports/{id}', [RapportController::class, 'show'])->name('rapports.show');
 });
 
 Route::get('/certificate-of-attendance/{key}', [AttendanceCertificate::class, 'show'])->name('certificate-of-attendance.show');
