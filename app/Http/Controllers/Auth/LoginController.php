@@ -47,11 +47,12 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-
         if (Auth::guard('students')->attempt($credentials)) {
             return redirect()->route('home');
         } else if (Auth::guard('admins')->attempt($credentials)) {
             return redirect()->route('statistic');
+        } else if (Auth::guard('enseignants')->attempt($credentials)) {
+            return redirect()->route('rapports');
         } else {
             return redirect()->route('login')
                 ->with('error', "Le CIN ou le mot de passe est incorrect.");
