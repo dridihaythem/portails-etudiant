@@ -48,7 +48,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('students')->attempt($credentials)) {
-            return redirect()->route('home');
+            return redirect()->route('meet.matieres.index');
         } else if (Auth::guard('admins')->attempt($credentials)) {
             return redirect()->route('statistic');
         } else if (Auth::guard('enseignants')->attempt($credentials)) {

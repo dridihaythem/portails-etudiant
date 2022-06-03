@@ -6,13 +6,13 @@
 <script>
     const domain = 'meet.jit.si/isetbz';
 const options = {
-    roomName: 'Projet Integration',
+    roomName: '{{$matiere->libelle}}',
     width: '100%',
     height: 700,
     parentNode: document.querySelector('#meet'),
     userInfo : {
         email : 'haithemdridiweb@gmail.com',
-        'displayName' : 'Haythem'
+        'displayName' : "{{ Auth::guard('students')->user()->first_name }} {{ Auth::guard('students')->user()->last_name }}"
     }
 };
 const api = new JitsiMeetExternalAPI(domain, options);
@@ -22,7 +22,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">
-            <i class="fa-solid fa-video"></i> Cours en ligne
+            <i class="fa-solid fa-video"></i> Cour {{$matiere->libelle}} en ligne
         </h3>
     </div>
 

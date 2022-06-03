@@ -278,10 +278,10 @@
 
                 @if(Auth::guard('students')->check())
                 <li class="nav-item">
-                    <a href="{{ route('meet')}}" class="nav-link">
+                    <a href="{{ route('meet.matieres.index')}}" class="nav-link">
                         <i class="nav-icon fa-solid fa-video"></i>
                         <p>
-                            Cours en ligne
+                            Les matieres
                         </p>
                     </a>
                 </li>

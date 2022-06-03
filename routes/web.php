@@ -16,6 +16,7 @@ use App\Http\Controllers\User\UpdatePasswordController;
 use App\Http\Controllers\MatierController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\Guest\NewsController as GuestNewsController;
+use App\Http\Controllers\StudentMatiereController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,7 @@ Route::get('/certificate-of-attendance/{key}', [AttendanceCertificate::class, 's
 
 Route::group(['middleware' => 'auth:students'], function () {
     Route::resource('/certificate-of-attendance', AttendanceCertificate::class)->only(['index', 'store']);
+    Route::resource('/student/matieres', StudentMatiereController::class, ['as' => 'meet']);
 });
 
 Auth::routes();
@@ -68,10 +70,5 @@ Route::resource('depot/rapports', DepotRapportController::class, ['as' => 'depot
 
 Route::get('/settings/date-depots-rapports', [DateDepotRapportController::class, 'index'])->name('settings.date-depots-rapports');
 Route::post('/settings/date-depots-rapports', [DateDepotRapportController::class, 'update']);
-
-Route::get('meet', function () {
-    return view('meet');
-})->name('meet');
-
 
 Route::resource('news', NewsController::class);
