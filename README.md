@@ -1,64 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# A propos
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Le projet Portails Étudiant est une application web qui fournit une plateforme permettant aux étudiants, aux enseignants et aux administrateurs d'interagir entre eux. L'objectif principal de ce projet est de créer un hub central pour les étudiants, les enseignants et les administrateurs afin d'accéder aux informations sur l'université, leurs cours et leur progression académique.
 
-## About Laravel
+-   Projet réalisé en 2022
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Video Demo :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/D-1NrQaPlzc/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERD-1NrQaPlzcE)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Captures D'ecran
 
-## Learning Laravel
+<div align="center">
+<img src="screenshots/login.png">
+login
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Espace etudiant
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<div align="center">
+<img src="screenshots/cours.png">
+joindre un cours en ligne "Developpement web coté Serveur"
+</div>
 
-## Laravel Sponsors
+<div align="center">
+<img src="screenshots/demande_attestation.png">
+Demander une attestation de présence avec un QR code
+</div>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<div align="center">
+<img src="screenshots/attestation.png">
+attestation de présence avec un QR code
+</div>
 
-### Premium Partners
+<div align="center">
+<img src="screenshots/deposer_rapport.png">
+Déposer son rapport de stage (selon les dates fixées par l'administrateur)
+</div>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Admin:
 
-## Contributing
+<div align="center">
+<img src="screenshots/statistiques.png">
+Statistiques
+</div>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<div align="center">
+<img src="screenshots/liste_etudiants.png">
+Gestion des etudiants
+</div>
 
-## Code of Conduct
+<div align="center">
+<img src="screenshots/etudiant.png">
+Gestion des etudiants
+</div>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<div align="center">
+<img src="screenshots/actualite.png">
+Ajouter une actualité (avec la possibilité d'envoyer une notification aux étudiants : push notification).
+</div>
 
-## Security Vulnerabilities
+# Cas d'utilisations :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Administrateur
 
-## License
+-   Gestion des actualités
+-   Statistiques
+-   Gestion des départements
+-   Gestion des spécialités
+-   Gestion des classes
+-   Gestion des étudiants
+-   Gestion des administrateurs
+-   Gestion des enseignants
+-   Paramètres
+-   Modifier son mot de passe
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Etudiant
+
+-   Afficher les actualités
+-   Liste de ses matières
+-   Joindre un cours en ligne (Video)
+-   Déposer son rapport de stage (selon les dates fixées par l'administrateur)
+-   Demander une attestation de présence avec un QR code
+-   Modifier son mot de passe
+
+## Enseignant
+
+-   Afficher les rapports de stage déposés par les étudiants.
+-   Modifier son mot de passe
