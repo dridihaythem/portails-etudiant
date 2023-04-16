@@ -55,10 +55,34 @@ Gestion des etudiants
 </div>
 
 <div align="center">
+<img src="screenshots/list_classes.png">
+Gestion des classes
+</div>
+
+<div align="center">
+<img src="screenshots/ajouter_classe.png">
+Gestion des etudiants
+</div>
+
+<div align="center">
 <img src="screenshots/actualite.png">
 Ajouter une actualité (avec la possibilité d'envoyer une notification aux étudiants : push notification).
 </div>
 
+<div align="center">
+<img src="screenshots/liste_actualites.png">
+Modifier la date de dépôt des rapports
+</div>
+
+<div align="center">
+<img src="screenshots/modifier_mot_de_passe.png">
+Modifier le mot de passe
+</div>
+
+<div align="center">
+<img src="screenshots/liste_actualites.png">
+Page d'accueil : liste des actualités
+</div>
 # Cas d'utilisations :
 
 ## Administrateur
